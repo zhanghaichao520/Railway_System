@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.haichaoaixuexi.railway_system_android">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <application
+        android:name=".app.Appliaction"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        tools:replace="android:name,android:icon,android:theme,android:allowBackup ">
+        <activity android:name=".app.LoginActivity">
+        </activity>
+        <activity android:name=".app.VerificationCodeActivity">
+        </activity>
+        <activity android:name=".app.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".app.EquimentInfoActivity">
+        </activity>
+        <activity android:name=".app.DataSyncActivity">
+        </activity>
+        <activity android:name=".app.EqIssuesActivity">
+        </activity>
+        <activity android:name=".app.EqInfoSyncActivity">
+        </activity>
+        <activity android:name=".app.EqCheckListActivity">
+        </activity>
+        <activity android:name=".app.ChangePasswordActivity">
+        </activity>
+        <activity android:name=".app.FeedBackActivity">
+        </activity>
+        <activity android:name=".app.EqCheckInfoActivity">
+
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+    </application>
+</manifest>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/btn_code_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/back"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:background="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_connPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/divider_gray_menu"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:text="验证码已发送至关联手机：+86 18279159611"/>
+        <com.tuo.customview.VerificationCodeView
+            android:id="@+id/icv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="26dp"
+            app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus"
+            app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal"
+            app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
+            app:icv_et_number="6"
+            app:icv_et_text_color="#000000"
+            app:icv_et_width="50dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_VerificationCode"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_shape"
+        android:text="确 认 登 陆" />
+    <Button
+        android:id="@+id/btn_reGetCode"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_shape"
+        android:text="重新获取验证码"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/txt_reGetCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/divider_gray_menu"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:textSize="16sp"
+        android:text="重新获取验证码 (30s)"></TextView>
+
+
+</LinearLayout>

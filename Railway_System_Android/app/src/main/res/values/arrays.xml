@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="check_type">
+        <item>点检</item>
+        <item>巡检</item>
+    </string-array>
+    <string-array name="check_grade">
+        <item>A级</item>
+        <item>B级</item>
+        <item>C级</item>
+    </string-array>
+</resources>

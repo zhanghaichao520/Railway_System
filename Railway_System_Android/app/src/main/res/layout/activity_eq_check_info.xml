@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/header">
+    </include>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:padding="10.0dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/JCLX"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spi_JCLX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:background="@color/gray"
+                android:entries="@array/check_type"
+                android:gravity="center"
+                android:textAlignment="center"
+                style="simple_spinner_dropdown_item"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SBBH"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSBBH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="11DDDDDDDD1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GZLX"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spi_GZLX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:background="@color/gray"
+                android:entries="@array/check_type"
+                android:gravity="center"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GZDJ"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spi_GZDJ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:background="@color/gray"
+                android:entries="@array/check_grade"
+                android:gravity="center"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GZTP"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/clip_pic_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:autoLink="all"
+                    android:gravity="center"
+                    android:text="@string/clicktochoose"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    />
+
+                <ImageView
+                    android:id="@+id/clip_pic"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:src="@mipmap/background1"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GZMS"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/edt_GZMS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/shape_gzms"
+                android:lines="4"
+                android:textColor="@color/black"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="本地保存"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/btn_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="22dp"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="保存上传"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

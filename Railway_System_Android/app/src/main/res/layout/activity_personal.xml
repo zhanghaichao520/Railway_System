@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/background2"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:gravity="left">
+
+        <TextView
+            android:id="@+id/txt_setName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:gravity="center_vertical"
+            android:text="未登陆"
+            android:textColor="#000000"
+            android:textSize="26.0sp"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                         android:id="@+id/profile_image"
+                                                         android:layout_width="60dp"
+                                                         android:layout_height="60dp"
+                                                         android:layout_centerHorizontal="true"
+                                                         android:layout_marginLeft="20dp"
+                                                         android:scaleType="centerCrop"
+                                                         android:src="@drawable/photo"
+                                                         app:riv_corner_radius="2dip"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#7aff"
+        android:layout_below="@+id/top"
+        android:orientation="vertical"
+        android:padding="10.0dip"
+        android:layout_marginTop="30dp">
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_gh"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/worker"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:id="@+id/numHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_gh"
+                android:text="@string/numHint"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/setNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/numHint"
+                android:paddingLeft="50.0dip"
+                android:text=""
+                android:textColor="@color/person_info"
+                android:textSize="15.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_sj"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:layout_alignParentLeft="true"
+                                                             android:layout_alignParentStart="true"
+                                                             android:layout_alignParentTop="true"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/phone"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:id="@+id/phoneHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_sj"
+                android:text="@string/phoneHint"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/btn_setPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/setting_button_selector"
+                android:gravity="center"
+                android:text="@string/nameEdit"
+                android:textColor="@color/hintColor"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/btn_setPhone"
+                android:layout_toRightOf="@id/phoneHint"
+                android:paddingLeft="50.0dip"
+                android:text=""
+                android:textColor="@color/person_info"
+                android:textSize="15.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_dz"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/addr"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:id="@+id/addrHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_dz"
+                android:text="@string/addrHint"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/btn_setAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/setting_button_selector"
+                android:gravity="center"
+                android:text="@string/nameEdit"
+                android:textColor="@color/hintColor"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/btn_setAddr"
+                android:layout_toRightOf="@id/addrHint"
+                android:paddingLeft="50.0dip"
+                android:text=""
+                android:textColor="@color/person_info"
+                android:textSize="13.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_zw"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/position"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:id="@+id/positionHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_zw"
+                android:text="@string/positionHint"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/setPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/positionHint"
+                android:paddingLeft="50.0dip"
+                android:text=""
+                android:textColor="@color/person_info"
+                android:textSize="13.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_bjz"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/group"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:id="@+id/groupHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_bjz"
+                android:text="@string/groupHint"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/groupHint"
+                android:paddingLeft="50.0dip"
+                android:text=""
+                android:textColor="@color/person_info"
+                android:textSize="13.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <RelativeLayout
+            android:id="@+id/updateRelative"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/update_selector"
+            android:clickable="true"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_shenji"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/improve"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_shenji"
+                android:text="@string/udpateCheck"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/versionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="V1.1"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#37c"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="退出登录"
+            android:textColor="#fff"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_user"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:paddingBottom="36dip"
+        android:paddingLeft="24dip"
+        android:paddingRight="15dip"
+        android:paddingTop="36dip">
+
+        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_portrait"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/worker"
+            app:riv_corner_radius="2dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dip"
+            android:layout_toRightOf="@id/img_portrait"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击登录"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dip"
+                android:text="开始你的工作之行"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_right_arrow_selector" />
+    </RelativeLayout>
+    <com.zhy.view.CircleMenuLayout
+        android:id="@+id/id_menulayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/circle_bg3" >
+        <RelativeLayout
+            android:id="@id/id_circle_menu_item_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="104.0dip"
+            android:layout_height="104.0dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tielu_icon"
+            android:layout_centerInParent="true"
+            app:riv_oval="true"/>
+        </RelativeLayout>
+    </com.zhy.view.CircleMenuLayout>
+</LinearLayout>

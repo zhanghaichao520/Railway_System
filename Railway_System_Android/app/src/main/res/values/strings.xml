@@ -1,0 +1,55 @@
+<resources>
+    <!--app相关-->
+    <string name="app_name">铁路设备巡检系统</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="jingYinHint">静音模式</string>
+    <string name="nameEdit">修改></string>
+    <string name="pwdSetHint">未设置></string>
+    <string name="jingYinSetHint">已关闭</string>
+    <string name="contactUS">联系我们</string>
+    <string name="credibility">信誉等级</string>
+    <string name="aboutSoft">关于软件</string>
+    <string name="flag">></string>
+    <string name="udpateCheck">升级检查</string>
+    <string name="Hint">提示</string>
+    <string name="exitHint">退出</string>
+    <string name="versionUpdate">版本升级</string>
+    <string name="NotNeedUpt">您当前的版本是最新版本，无需升级！</string>
+    <!--用户相关属性-->
+    <string name="user_avatar">用户头像</string>
+    <string name="avatar_border">头像边框</string>
+    <string name="numHint">工 号</string>
+    <string name="phoneHint">手 机</string>
+    <string name="addrHint">地 址</string>
+    <string name="positionHint">职 位</string>
+    <string name="groupHint">包机组</string>
+    <string name="pwdHint">修改密码</string>
+    <string name="feedBack">问题反馈</string>
+
+    <!--设备相关属性-->
+    <string name="SBBH">设备编号</string>
+    <string name="SSQY">所属区域</string>
+    <string name="SBMC">设备名称</string>
+    <string name="SBGG">设备规格</string>
+    <string name="ZZCJ">制造厂家</string>
+    <string name="ZZRQ">制造日期</string>
+    <string name="SBZT">设备状态</string>
+    <string name="SSCJ">所属车间</string>
+    <string name="XXZQ">检修周期</string>
+    <string name="icons">&#x3605; &#x35ad; &#x35ae; &#x35af;</string>
+
+    <!--app——title-->
+    <string name="equi_info">设备信息</string>
+    <string name="data_sync">数据同步</string>
+    <string name="eq_check_list">设备检修列表</string>
+    <string name="eq_issues_sync">设备故障同步</string>
+    <string name="eq_info_sync">设备信息同步</string>
+
+    <string name="JCLX">检查类型</string>
+    <string name="GZLX">故障类型</string>
+    <string name="GZDJ">故障等级</string>
+    <string name="GZTP">故障图片</string>
+    <string name="GZMS">故障描述</string>
+    <string name="clicktochoose"><u>点击此处拍照或者选取图片</u></string>
+</resources>

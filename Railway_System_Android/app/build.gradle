@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+///mob
+apply plugin: 'com.mob.sdk'
+//greenDao
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    defaultConfig {
+        applicationId "com.haichaoaixuexi.railway_system_android"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1//数据库版本号
+        daoPackage 'com.haichaoaixuexi.railway_system_android.greendao'
+//设置DaoMaster、DaoSession、Dao包名
+        targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+        //targetGenDirTestA：设置生成单元测试目录
+        //generateTests：设置自动生成单元测试用例
+    }
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //环形菜单
+    compile project(':library_zhy_CircleMenu')
+    //gson数据解析封装工具
+    compile files('libs/gson-2.2.4.jar')
+
+    //网络访问框架okhttp
+    compile 'com.zhy:okhttputils:2.0.0'
+
+    //zxing二维码
+    compile 'com.github.yuzhiqiang1993:zxing:2.0.0'
+
+    //自定义view正方形验证码输入框
+    compile 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
+
+    //仿微信底部tab标签
+    compile 'com.lzy.widget:view-core:0.1.5'
+
+    //kutils
+    compile 'com.github.zwy:kutils:+'
+
+    //圆形图片view
+    compile 'com.makeramen:roundedimageview:2.2.1'
+
+    //Android控件绑定工具
+    compile 'com.jakewharton:butterknife:8.4.0'
+
+    //smartTable
+    compile 'com.github.huangyanbin:SmartTable:1.8.7'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+}
+// 在MobSDK的扩展中注册SMSSDK的相关信息
+MobSDK {
+    appKey "23d0a389f2505"
+    appSecret "52d46e701d7f94ebd16226c77c7f6998"
+    SMSSDK {//短信验证SDk
+        gui true
+    }
+}

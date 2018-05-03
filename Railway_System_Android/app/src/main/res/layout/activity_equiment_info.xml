@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@mipmap/bg"
+                android:orientation="vertical">
+
+    <include layout="@layout/header"></include>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:padding="10.0dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SBBH"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSBBH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SSQY"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSSQY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SBMC"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSBMC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SBGG"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSBGG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ZZCJ"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setZZCJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ZZRQ"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setZZRQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SBZT"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSBZT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SSCJ"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setSSCJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/XXZQ"
+                android:textColor="@color/black"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/setXXZQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="50.0dip"
+                android:text="11DDDDDDDD1"
+                android:textColor="@color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/btn_repair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="设备检修"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/btn_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="检修历史"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_marginLeft="22dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

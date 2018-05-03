@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.haichaoaixuexi.railway_system_android.app.LoginActivity">
+
+    <com.haichaoaixuexi.railway_system_android.view.CustomVideoView
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <include
+        android:id="@+id/main_title"
+        layout="@layout/title_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_title"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="55dip"
+            android:layout_height="55dip"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/project_detail_cir"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center"
+            android:text="Railway Manager"
+            android:textColor="#000000"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="中國鐵路"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <include
+            android:id="@+id/input_layout"
+            layout="@layout/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="130dip"/>
+
+        <include
+            android:id="@+id/layout_progress"
+            layout="@layout/layout_progress"
+            android:layout_width="match_parent"
+            android:layout_height="130dip"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/main_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/text_bg"
+            android:gravity="center"
+            android:paddingBottom="2dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="2dip"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/main_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/text_bg"
+            android:gravity="center"
+            android:paddingBottom="2dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="2dip"
+            android:text="取消"
+            android:visibility="gone"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
