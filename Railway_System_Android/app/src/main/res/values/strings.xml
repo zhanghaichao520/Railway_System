@@ -43,13 +43,20 @@
     <string name="equi_info">设备信息</string>
     <string name="data_sync">数据同步</string>
     <string name="eq_check_list">设备检修列表</string>
+    <string name="eq_repair_list">设备验收列表</string>
     <string name="eq_issues_sync">设备故障同步</string>
     <string name="eq_info_sync">设备信息同步</string>
+    <string name="local_eq_check">本地设备检修结果</string>
+    <string name="local_eq_repair">本地设备验收结果</string>
 
     <string name="JCLX">检查类型</string>
     <string name="GZLX">故障类型</string>
     <string name="GZDJ">故障等级</string>
     <string name="GZTP">故障图片</string>
     <string name="GZMS">故障描述</string>
+    <string name="BXR">报修人</string>
+    <string name="BXSJ">报修时间</string>
+    <string name="YSSJ">验收时间</string>
+    <string name="YSJG">验收结果</string>
     <string name="clicktochoose"><u>点击此处拍照或者选取图片</u></string>
 </resources>

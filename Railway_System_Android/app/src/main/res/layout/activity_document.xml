@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:background="#ececec"
+              android:layout_height="match_parent">
+    <include
+        android:id="@+id/title"
+        layout="@layout/header">
+    </include>
+    <TextView
+        android:id="@+id/tit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:text="国家铁路局关于废止部分规范性文件的通知"
+        android:layout_below="@id/title"/>
+<TextView
+    android:id="@+id/con"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="\t\t\t按照《国务院办公厅关于做好行政法规部门规章和\n规范性文件清理工作有关事项的通知（国办函[2016]12号），国家铁路局组织对改革开放以来原铁道部和国家铁路局发布的规范性性文件进行了全面清理。经研究并征求有关单位意见，现决定对下列9件与减少行政审批、推进简政放权改革精神已不相符、不再适用的政策性文件予以废止"
+    android:textColor="@color/black"
+    android:gravity="left"
+    android:layout_marginTop="19dp"
+    android:layout_below="@+id/tit"
+    android:layout_alignLeft="@+id/tit"
+    android:layout_alignStart="@+id/tit"
+    android:layout_alignRight="@+id/sj"
+    android:layout_alignEnd="@+id/sj"/>
+    <TextView
+        android:id="@+id/sj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:text="发布时间：2016-05-26 17:02"
+        android:layout_below="@id/con"/>
+    <TextView
+        android:id="@+id/source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:text="来源：国家铁路局 字号：TT"
+        android:layout_below="@id/sj"/>
+</RelativeLayout>

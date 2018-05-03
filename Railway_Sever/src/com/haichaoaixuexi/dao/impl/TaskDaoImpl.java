@@ -21,7 +21,7 @@ public class TaskDaoImpl extends DBUtil implements TaskDao{
 		// TODO Auto-generated method stub
 		List<Task> tasks = new ArrayList<Task>();
 		Task task = null;
-		String sql = "SELECT * FROM task WHERE TASK_USER = ? AND TASK_PROCESS ='´ý¼ì'";
+		String sql = "SELECT * FROM task WHERE TASK_USER = ?";
 		ResultSet resultSet = super.executeQuery(sql, USER_ID);
 		try {
 			while (resultSet.next()) {

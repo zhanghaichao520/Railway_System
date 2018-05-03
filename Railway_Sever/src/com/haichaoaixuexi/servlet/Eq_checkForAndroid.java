@@ -76,7 +76,7 @@ public class Eq_checkForAndroid extends HttpServlet {
 					System.out.println(fileItem.getFieldName() + fileItem.getString("utf-8"));
 					if ("bean".equals(fileItem.getFieldName())) {
 						Gson gson = new Gson();
-                        ec = gson.fromJson(fileItem.getString("utf-8"), Eq_check.class);
+						ec = gson.fromJson(fileItem.getString("utf-8"), Eq_check.class);
 					}
 				} else {
 					// 处理非普通表单字段
@@ -86,7 +86,7 @@ public class Eq_checkForAndroid extends HttpServlet {
 					// upload\name.jpg
 					picpath = file.substring(i + 1, file.length()) + "\\" + picname;
 					System.out.println("picname:" + picname);
-					//写入文件
+					// 写入文件
 					fileItem.write(new File(file, picname));
 					ec.setGZTP(picname);
 				}
@@ -100,15 +100,12 @@ public class Eq_checkForAndroid extends HttpServlet {
 			out.println("unknownfailed");
 			e.printStackTrace();
 		}
-		if (ec!=null) {
-			ec.setYSR(0);
-			if (ecd.save(ec)) {
-				out.println("success");
-			}else {
-				out.println("database error");
-			}
+		if (ecd.save(ec) && ec != null) {
+			out.println("success");
+		} else {
+			out.println("database error");
 		}
-		
+
 	}
 
 }

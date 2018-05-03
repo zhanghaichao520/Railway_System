@@ -50,6 +50,7 @@ public class LoginForAndroid extends HttpServlet {
 		/**
 		 * ·µ»ØÖµ
 		 */
+		//adb -d shell "run-as com.haichaoaixuexi.railway_system_android cat /data/data/com.haichaoaixuexi.railway_system_android/databases/railway.db > /sdcard/railway.db"
 		try {
 			out = response.getWriter();
 			/**

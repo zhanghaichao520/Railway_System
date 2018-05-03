@@ -17,7 +17,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * Created by haichao on 2018/2/22.
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe: 数据同步
+ */
 public class DataSyncActivity extends BaseActivity {
 
 
@@ -47,7 +51,7 @@ public class DataSyncActivity extends BaseActivity {
         lists.add("故障类型下载");
         lists.add("设备信息下载");
         lists.add("设备检修问题上传");
-        lists.add("设备维修结果上传");
+        lists.add("设备验收结果上传");
         //工长分配任务
         /*if (Const.currentuser.getROLE_ID()==2)
             lists.add("本组工人信息同步");*/
@@ -91,6 +95,12 @@ public class DataSyncActivity extends BaseActivity {
                 break;
             case 1:
                 readyGo(EqInfoSyncActivity.class);
+                break;
+            case 2:
+                readyGo(EqCheckUploadActivity.class);
+                break;
+            case 3:
+                readyGo(EqRepairUploadActivity.class);
                 break;
         }
     }

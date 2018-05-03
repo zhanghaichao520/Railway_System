@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,6 +23,7 @@ import com.haichaoaixuexi.railway_system_android.R;
 import com.haichaoaixuexi.railway_system_android.data.Const;
 import com.haichaoaixuexi.railway_system_android.entity.Eq_check;
 import com.haichaoaixuexi.railway_system_android.entity.Eq_issue_kind;
+import com.haichaoaixuexi.railway_system_android.greendao.Eq_checkDao;
 import com.haichaoaixuexi.railway_system_android.greendao.Eq_issue_kindDao;
 import com.haichaoaixuexi.railway_system_android.utils.PhotoUtil;
 import com.lzy.okgo.OkGo;
@@ -41,6 +44,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Created by haichao on 2018/2/22.
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe: 设备检修信息填写
+ */
 public class EqCheckInfoActivity extends BaseActivity {
 
     @BindView(R.id.btn_back)
@@ -65,6 +73,14 @@ public class EqCheckInfoActivity extends BaseActivity {
     Spinner spiGZDJ;
     @BindView(R.id.edt_GZMS)
     EditText edtGZMS;
+    @BindView(R.id.txt_JCLX)
+    TextView txtJCLX;
+    @BindView(R.id.txt_GZLX)
+    TextView txtGZLX;
+    @BindView(R.id.txt_GZDJ)
+    TextView txtGZDJ;
+    @BindView(R.id.btn_sync)
+    TextView btnSync;
     private String path;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -75,6 +91,9 @@ public class EqCheckInfoActivity extends BaseActivity {
     private Appliaction myApp;
     private Eq_issue_kindDao dao;
     private Eq_issue_kind issue;
+    private Eq_checkDao eq_checkDao;
+    private Gson gson = new Gson();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,29 +110,61 @@ public class EqCheckInfoActivity extends BaseActivity {
     protected void initData() {
         myApp = (Appliaction) getApplication();
         dao = myApp.getDaoSession().getEq_issue_kindDao();
+        eq_checkDao = myApp.getDaoSession().getEq_checkDao();
         final Intent intent = getIntent();
-        String SBBH = intent.getStringExtra("SBBH");
-        setSBBH.setText(SBBH);
-
-        String GZLX = intent.getStringExtra("GZLX");
-        String[] gz = GZLX.split(",");
-        int count = 0;
-        for (int i = 0; i < gz.length; i++) {
-            issue = dao.queryBuilder().where(Eq_issue_kindDao.Properties.EQ_ISSUE_KIND.eq(Integer.parseInt(gz[i]))).unique();
+        String checkString = intent.getStringExtra("check");
+        if (checkString != null && (!checkString.equals(""))) {
+            //控件可见度调节
+            btnSave.setVisibility(View.GONE);
+            btnUpload.setVisibility(View.GONE);
+            spiGZLX.setVisibility(View.GONE);
+            spiGZDJ.setVisibility(View.GONE);
+            spiJCLX.setVisibility(View.GONE);
+            clipPicTitle.setVisibility(View.GONE);
+            txtGZDJ.setVisibility(View.VISIBLE);
+            txtGZLX.setVisibility(View.VISIBLE);
+            txtJCLX.setVisibility(View.VISIBLE);
+            clipPic.setVisibility(View.VISIBLE);
+            btnSync.setVisibility(View.VISIBLE);
+            Eq_check check = gson.fromJson(checkString, Eq_check.class);
+            txtJCLX.setText(check.getJCLX());
+            setSBBH.setText(check.getSBBH() + "");
+            issue = dao.queryBuilder().where(Eq_issue_kindDao.Properties.EQ_ISSUE_KIND.eq(check.getGZLX())).unique();
             if (issue != null)
-                gzlist.add(issue.getEQ_ISSUE());
-            else {
-                count++;
-                continue;
+                txtGZLX.setText(issue.getEQ_ISSUE());
+            txtGZDJ.setText(check.getABC());
+            //图片
+            File file = new File(check.getGZTP());
+            if (file.exists()) {
+                Bitmap bm = BitmapFactory.decodeFile(check.getGZTP());
+                clipPic.setImageBitmap(bm);
+            }else {
+                btnSync.setVisibility(View.GONE);
             }
+            edtGZMS.setText(check.getGZMS());
+        } else {
+            String SBBH = intent.getStringExtra("SBBH");
+            setSBBH.setText(SBBH);
+            String GZLX = intent.getStringExtra("GZLX");
+            String[] gz = GZLX.split(",");
+            int count = 0;
+            for (int i = 0; i < gz.length; i++) {
+                issue = dao.queryBuilder().where(Eq_issue_kindDao.Properties.EQ_ISSUE_KIND.eq(Integer.parseInt(gz[i]))).unique();
+                if (issue != null)
+                    gzlist.add(issue.getEQ_ISSUE());
+                else {
+                    count++;
+                    continue;
+                }
+            }
+            if (count == gz.length) {
+                gzlist.add("类型不明(请同步故障信息)");
+            }
+            spiAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, gzlist);
+            spiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spiGZLX.setAdapter(spiAdapter);
         }
-        if (count==gz.length){
-            gzlist.add("类型不明(请同步故障信息)");
-        }
-        spiAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, gzlist);
-        spiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spiGZLX.setAdapter(spiAdapter);
     }
 
     @OnClick(R.id.clip_pic_title)
@@ -224,6 +275,18 @@ public class EqCheckInfoActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.btn_save)
+    public void save() {
+        Eq_check ec = new Gson().fromJson(getEcBean(), Eq_check.class);
+        eq_checkDao.insert(ec);
+        DialogUIUtils.showOnlyOneButtonAlertDialog(mContext, "数据保存成功", "确认", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyGoThenKill(StartActivity.class);
+            }
+        });
+    }
+
     @OnClick(R.id.btn_upload)
     public void upload() {
         final PostRequest<String> request = OkGo.<String>post(Const.URL_EQ_CHECK)
@@ -232,7 +295,7 @@ public class EqCheckInfoActivity extends BaseActivity {
         if (path != null && path != "") {
             request.params("GZTP", new File(path))
                     .isMultipart(true);
-        }else {
+        } else {
             showToast("未选择图片");
             return;
         }
@@ -240,17 +303,56 @@ public class EqCheckInfoActivity extends BaseActivity {
         request.execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
-                if (response.body().trim().equals("success")){
+                if (response.body().trim().equals("success")) {
                     DialogUIUtils.showOnlyOneButtonAlertDialog(mContext, "数据上传成功", "确认", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             readyGoThenKill(StartActivity.class);
                         }
                     });
-                }else {
+                } else {
                     showToast(response.body());
                 }
             }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                dialog.dismiss();
+            }
+        });
+    }
+    @OnClick(R.id.btn_sync)
+    public void sync() {
+        String checkString = getIntent().getStringExtra("check");
+        final Eq_check check = gson.fromJson(checkString, Eq_check.class);
+        final PostRequest<String> request = OkGo.<String>post(Const.URL_EQ_CHECK)
+                .tag(this)
+                .params("bean", checkString);
+        if (check.getGZTP() != null && check.getGZTP() != "") {
+            request.params("GZTP", new File(check.getGZTP()))
+                    .isMultipart(true);
+        } else {
+            showToast("未选择图片");
+            return;
+        }
+        final Dialog dialog = DialogUIUtils.showLoadingHorizontal(mContext, "数据上传中").show();
+        request.execute(new StringCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                if (response.body().trim().equals("success")) {
+                    DialogUIUtils.showOnlyOneButtonAlertDialog(mContext, "数据上传成功", "确认", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            eq_checkDao.deleteByKey(check.getId());
+                            readyGoThenKill(StartActivity.class);
+                        }
+                    });
+                } else {
+                    showToast(response.body());
+                }
+            }
+
             @Override
             public void onFinish() {
                 super.onFinish();
@@ -271,8 +373,10 @@ public class EqCheckInfoActivity extends BaseActivity {
         }
         ec.setGZMS(edtGZMS.getText().toString().trim());
         ec.setBXR(Const.currentuser.getUSER_ID());
-        ec.setBXSJ(new Timestamp(System.currentTimeMillis()));
+        ec.setBXSJ(new Timestamp(System.currentTimeMillis()).toString());
         ec.setABC(spiGZDJ.getSelectedItem().toString().charAt(0) + "");
+        ec.setGZTP(path);
+        ec.setYSR(0);
         Gson gson = new Gson();
         return gson.toJson(ec);
     }

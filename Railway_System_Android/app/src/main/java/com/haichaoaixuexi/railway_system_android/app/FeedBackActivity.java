@@ -25,6 +25,7 @@ import butterknife.OnClick;
 /**
  * Created by haichao on 2018/3/6.
  * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe:问题反馈
  */
 
 public class FeedBackActivity extends BaseActivity {

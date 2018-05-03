@@ -9,10 +9,12 @@ import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
 import com.haichaoaixuexi.railway_system_android.entity.Equipment;
+import com.haichaoaixuexi.railway_system_android.entity.Eq_check;
 import com.haichaoaixuexi.railway_system_android.entity.Eq_issue_kind;
 import com.haichaoaixuexi.railway_system_android.entity.Task;
 
 import com.haichaoaixuexi.railway_system_android.greendao.EquipmentDao;
+import com.haichaoaixuexi.railway_system_android.greendao.Eq_checkDao;
 import com.haichaoaixuexi.railway_system_android.greendao.Eq_issue_kindDao;
 import com.haichaoaixuexi.railway_system_android.greendao.TaskDao;
 
@@ -26,10 +28,12 @@ import com.haichaoaixuexi.railway_system_android.greendao.TaskDao;
 public class DaoSession extends AbstractDaoSession {
 
     private final DaoConfig equipmentDaoConfig;
+    private final DaoConfig eq_checkDaoConfig;
     private final DaoConfig eq_issue_kindDaoConfig;
     private final DaoConfig taskDaoConfig;
 
     private final EquipmentDao equipmentDao;
+    private final Eq_checkDao eq_checkDao;
     private final Eq_issue_kindDao eq_issue_kindDao;
     private final TaskDao taskDao;
 
@@ -40,6 +44,9 @@ public class DaoSession extends AbstractDaoSession {
         equipmentDaoConfig = daoConfigMap.get(EquipmentDao.class).clone();
         equipmentDaoConfig.initIdentityScope(type);
 
+        eq_checkDaoConfig = daoConfigMap.get(Eq_checkDao.class).clone();
+        eq_checkDaoConfig.initIdentityScope(type);
+
         eq_issue_kindDaoConfig = daoConfigMap.get(Eq_issue_kindDao.class).clone();
         eq_issue_kindDaoConfig.initIdentityScope(type);
 
@@ -47,22 +54,29 @@ public class DaoSession extends AbstractDaoSession {
         taskDaoConfig.initIdentityScope(type);
 
         equipmentDao = new EquipmentDao(equipmentDaoConfig, this);
+        eq_checkDao = new Eq_checkDao(eq_checkDaoConfig, this);
         eq_issue_kindDao = new Eq_issue_kindDao(eq_issue_kindDaoConfig, this);
         taskDao = new TaskDao(taskDaoConfig, this);
 
         registerDao(Equipment.class, equipmentDao);
+        registerDao(Eq_check.class, eq_checkDao);
         registerDao(Eq_issue_kind.class, eq_issue_kindDao);
         registerDao(Task.class, taskDao);
     }
     
     public void clear() {
         equipmentDaoConfig.clearIdentityScope();
+        eq_checkDaoConfig.clearIdentityScope();
         eq_issue_kindDaoConfig.clearIdentityScope();
         taskDaoConfig.clearIdentityScope();
     }
 
     public EquipmentDao getEquipmentDao() {
         return equipmentDao;
+    }
+
+    public Eq_checkDao getEq_checkDao() {
+        return eq_checkDao;
     }
 
     public Eq_issue_kindDao getEq_issue_kindDao() {

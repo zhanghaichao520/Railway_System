@@ -41,7 +41,7 @@
             android:padding="5dp"
             app:av_tabIconNormal="@mipmap/tool_normal"
             app:av_tabIconSelected="@mipmap/tool__selected"
-            app:av_tabText="工具"
+            app:av_tabText="公告"
             app:av_tabTextSize="14sp"
             app:av_textColorNormal="#999999"
             app:av_textColorSelected="#46c01b"/>

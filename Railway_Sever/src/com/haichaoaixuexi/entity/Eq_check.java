@@ -15,6 +15,26 @@ public class Eq_check {
     private String GZTP;
     private String ABC;
 
+    private String imgString;
+    
+    private String BXR_NAME;
+    
+    private String YSJG;
+    
+    
+	public String getBXR_NAME() {
+		return BXR_NAME;
+	}
+	public void setBXR_NAME(String bXR_NAME) {
+		BXR_NAME = bXR_NAME;
+	}
+	
+	public String getYSJG() {
+		return YSJG;
+	}
+	public void setYSJG(String ySJG) {
+		YSJG = ySJG;
+	}
 	public int getEQ_CHECK_ID(){
         return this.EQ_CHECK_ID;
     }
@@ -81,4 +101,11 @@ public class Eq_check {
     public void setABC(String ABC){
         this.ABC = ABC;
     }
+	public String getImgString() {
+		return imgString;
+	}
+	public void setImgString(String imgString) {
+		this.imgString = imgString;
+	}
+    
 }

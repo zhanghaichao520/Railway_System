@@ -15,11 +15,11 @@ import com.haichaoaixuexi.util.DBUtil;
 public class UserDaoImpl extends DBUtil implements UserDao {
 
 	@Override
-	public Users checkLogin(String uname,String upwd) {
+	public Users checkLogin(String uname, String upwd) {
 		// TODO Auto-generated method stub
 		Users user = null;
 		String sql = "SELECT * FROM users,role,group_form WHERE USER_NUM = ? AND USER_PWD = ? AND users.ROLE_ID = role.ROLE_ID AND users.GROUP_ID = group_form.GROUP_ID";
-		ResultSet resultSet = super.executeQuery(sql, uname,upwd);
+		ResultSet resultSet = super.executeQuery(sql, uname, upwd);
 		try {
 			if (resultSet.next()) {
 				try {
@@ -37,25 +37,25 @@ public class UserDaoImpl extends DBUtil implements UserDao {
 		}
 		return user;
 	}
-/*	public static void main(String[] args) {
-		UserDaoImpl test = new UserDaoImpl();
-		Users u = new Users();
-		u.setUSER_NAME("hl");
-		u.setUSER_PWD("123");
-		u.setUSER_ID(3);
-		u.setUSER_TEL("12645");
-		u.setUSER_ADDR("asdf");
-		Gson gson = new Gson();
-		System.out.println(test.checkLogin("199509", "81dc9bdb52d04dc20036dbd8313ed055").getUSER_SEX());
-	}*/
+
+	/*
+	 * public static void main(String[] args) { UserDaoImpl test = new
+	 * UserDaoImpl(); Users u = new Users(); u.setUSER_NAME("hl");
+	 * u.setUSER_PWD("123"); u.setUSER_ID(3); u.setUSER_TEL("12645");
+	 * u.setUSER_ADDR("asdf"); Gson gson = new Gson(); //
+	 * System.out.println(test.checkLogin("199509",
+	 * "81dc9bdb52d04dc20036dbd8313ed055").getUSER_SEX());
+	 * System.out.println(test.getGroupUserById(4)); }
+	 */
 
 	@Override
 	public Users updateUser(Users users) {
 		// TODO Auto-generated method stub
 		String sql = "update users set USER_PWD = ?,USER_TEL = ?,USER_ADDR = ? where USER_ID = ?";
-		int res = super.executeUpdate(sql, users.getUSER_PWD(),users.getUSER_TEL(),users.getUSER_ADDR(),users.getUSER_ID());
+		int res = super.executeUpdate(sql, users.getUSER_PWD(), users.getUSER_TEL(), users.getUSER_ADDR(),
+				users.getUSER_ID());
 		Users user = null;
-		if (res>0) {
+		if (res > 0) {
 			sql = "SELECT * FROM users,role,group_form WHERE users.USER_ID = ? AND users.ROLE_ID = role.ROLE_ID AND users.GROUP_ID = group_form.GROUP_ID";
 			ResultSet resultSet = super.executeQuery(sql, users.getUSER_ID());
 			try {
@@ -124,5 +124,47 @@ public class UserDaoImpl extends DBUtil implements UserDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public int getGroupUserById(int uid) {
+		// TODO Auto-generated method stub
+		int id = 0;
+		String sql = "SELECT USER_ID FROM group_form WHERE group_form.GROUP_ID = (SELECT GROUP_ID FROM users WHERE USER_ID = ?)";
+		ResultSet resultSet = super.executeQuery(sql, uid);
+		try {
+			if (resultSet.next()) {
+				id = resultSet.getInt(1);
+				return id;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+	@Override
+	public Users getUserById(int uid) {
+		// TODO Auto-generated method stub
+		Users user = null;
+		String sql = "SELECT * FROM users,role,group_form WHERE users.USER_ID = ? AND users.ROLE_ID = role.ROLE_ID AND users.GROUP_ID = group_form.GROUP_ID";
+		ResultSet resultSet = super.executeQuery(sql, uid);
+		try {
+			if (resultSet.next()) {
+				try {
+					user = (Users) BeanUtil.autoBean(Users.class, resultSet);
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+						| InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 }

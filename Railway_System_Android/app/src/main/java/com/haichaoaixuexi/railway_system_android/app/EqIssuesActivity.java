@@ -34,6 +34,7 @@ import butterknife.OnClick;
 /**
  * Created by haichao on 2018/2/22.
  * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe: 设备问题字典展示
  */
 public class EqIssuesActivity extends BaseActivity {
     @BindView(R.id.btn_back)
@@ -112,7 +113,10 @@ public class EqIssuesActivity extends BaseActivity {
 
     private void download() {
         final Dialog dialog = DialogUIUtils.showLoadingHorizontal(EqIssuesActivity.this, "数据下载中").show();
-        OkGo.<String>post(Const.URL_DATA_SYNC).tag(this).params("action", "eq_issue_kind").execute(new StringCallback() {
+        OkGo.<String>post(Const.URL_DATA_SYNC)
+                .tag(this)
+                .params("action", "eq_issue_kind")
+                .execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
                 if (response.body().equals("failed")) {

@@ -46,29 +46,24 @@ dependencies {
     compile project(':library_zhy_CircleMenu')
     //gson数据解析封装工具
     compile files('libs/gson-2.2.4.jar')
-
     //网络访问框架okhttp
-    compile 'com.zhy:okhttputils:2.0.0'
-
     //zxing二维码
-    compile 'com.github.yuzhiqiang1993:zxing:2.0.0'
-
     //自定义view正方形验证码输入框
-    compile 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
-
     //仿微信底部tab标签
-    compile 'com.lzy.widget:view-core:0.1.5'
-
     //kutils
-    compile 'com.github.zwy:kutils:+'
-
     //圆形图片view
-    compile 'com.makeramen:roundedimageview:2.2.1'
-
     //Android控件绑定工具
-    compile 'com.jakewharton:butterknife:8.4.0'
-
+    //电子公文页
     //smartTable
+    compile files('libs/BASE64.jar')
+    compile 'com.zhy:okhttputils:2.0.0'
+    compile 'com.github.yuzhiqiang1993:zxing:2.0.0'
+    compile 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
+    compile 'com.lzy.widget:view-core:0.1.5'
+    compile 'com.github.zwy:kutils:+'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.dinuscxj:recyclerrefreshlayout:1.0.1'
     compile 'com.github.huangyanbin:SmartTable:1.8.7'
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

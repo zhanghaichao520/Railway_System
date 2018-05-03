@@ -313,7 +313,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:id="@+id/btn_repair"
+                android:id="@+id/btn_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -325,7 +325,20 @@
                 android:text="设备检修"
                 android:textColor="@color/black"
                 android:textSize="25sp"/>
-
+            <TextView
+                android:id="@+id/btn_repair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="设备验收"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:visibility="gone"/>
             <TextView
                 android:id="@+id/btn_history"
                 android:layout_width="wrap_content"

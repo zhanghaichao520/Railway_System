@@ -47,7 +47,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.haichaoaixuexi.railway_system_android.data.Const.REQUEST_CODE_SCAN;
-
+/**
+ * Created by haichao on 2018/2/22.
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe:登陆界面
+ */
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.edt_uname)
     EditText edtUname;

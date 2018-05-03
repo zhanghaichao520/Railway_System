@@ -10,9 +10,11 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.haichaoaixuexi.railway_system_android.R;
 import com.haichaoaixuexi.railway_system_android.data.Const;
+import com.haichaoaixuexi.railway_system_android.entity.Eq_check;
 import com.haichaoaixuexi.railway_system_android.entity.Equipment;
 import com.haichaoaixuexi.railway_system_android.greendao.EquipmentDao;
 import com.haichaoaixuexi.railway_system_android.utils.GeneralUtil;
+import com.haichaoaixuexi.railway_system_android.utils.PhotoUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -22,9 +24,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Created by haichao on 2018/2/22.
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe:设备详细信息展示
+ */
 public class EquimentInfoActivity extends BaseActivity {
 
     String SBBH = "";
+    String type = "";
     @BindView(R.id.btn_back)
     ImageView btnBack;
     @BindView(R.id.title_txt)
@@ -51,9 +59,12 @@ public class EquimentInfoActivity extends BaseActivity {
     TextView btnRepair;
     @BindView(R.id.btn_history)
     TextView btnHistory;
+    @BindView(R.id.btn_check)
+    TextView btnCheck;
     private Appliaction myApp;
     private EquipmentDao dao;
     private Equipment equipment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +80,15 @@ public class EquimentInfoActivity extends BaseActivity {
     protected void initData() {
         final Intent intent = getIntent();
         SBBH = intent.getStringExtra("SBBH");
+        type = intent.getStringExtra("type");
         titleTxt.setText(R.string.equi_info);
-
+        if (type.equals("check")){
+            btnCheck.setVisibility(View.VISIBLE);
+            btnRepair.setVisibility(View.GONE);
+        }else if (type.equals("repair")){
+            btnCheck.setVisibility(View.GONE);
+            btnRepair.setVisibility(View.VISIBLE);
+        }
         myApp = (Appliaction) getApplication();
         dao = myApp.getDaoSession().getEquipmentDao();
         equipment = dao.queryBuilder().where(EquipmentDao.Properties.EQUIP_ID.eq(SBBH)).unique();
@@ -170,18 +188,62 @@ public class EquimentInfoActivity extends BaseActivity {
                     }
                 });
     }
-    @OnClick(R.id.btn_repair)
-    public void repair(){
-        Bundle bundle =new Bundle();
-        bundle.putString("SBBH",SBBH);
+
+    @OnClick(R.id.btn_check)
+    public void check() {
+        Bundle bundle = new Bundle();
+        bundle.putString("SBBH", SBBH);
         if (equipment != null) {
-            bundle.putString("GZLX",equipment.getGZLX());
+            bundle.putString("GZLX", equipment.getGZLX());
         }
-        if (equipment.getSBZT()!=-1){
-            readyGo(EqCheckInfoActivity.class,bundle);
-        }
-        else {
+        if (equipment.getSBZT() != -1) {
+            readyGo(EqCheckInfoActivity.class, bundle);
+        } else {
             showToast("设备未投入使用");
         }
+    }
+    @OnClick(R.id.btn_repair)
+    public void repair(){
+        final String path = PhotoUtil.getPath(this);
+        final Dialog dialog = DialogUIUtils.showLoadingHorizontal(mContext, "数据下载中").show();
+        OkGo.<String>post(Const.URL_GET_EQ_CHECK)
+                .tag(this)
+                .params("action", "getOne")
+                .params("SBBH", SBBH)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (response.body().equals("failed")) {
+                            DialogUIUtils.showToast("服务器故障");
+                        } else {
+                            Gson gson = new Gson();
+                            Eq_check ec = gson.fromJson(response.body(),Eq_check.class);
+                            Intent intent = new Intent(mContext, EqRepairActivity.class);
+                            //减少intent传输字符串大小
+                            Const.imgString = ec.getImgString();
+                            ec.setImgString("");
+                            intent.putExtra("check", gson.toJson(ec));
+                            intent.putExtra("src", "net");
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        DialogUIUtils.showToast("下载数据失败");
+                    }
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        dialog.dismiss();
+                    }
+                });
+    }
+    @OnClick(R.id.btn_history)
+    public void history(){
+        Intent intent = new Intent(mContext, EqCheckHistoryActivity.class);
+        intent.putExtra("SBBH", SBBH);
+        startActivity(intent);
     }
 }

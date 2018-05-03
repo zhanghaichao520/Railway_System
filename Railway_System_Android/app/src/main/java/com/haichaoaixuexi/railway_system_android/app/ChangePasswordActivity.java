@@ -1,6 +1,5 @@
 package com.haichaoaixuexi.railway_system_android.app;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +25,11 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * Created by haichao on 2018/2/22.
+ * 至尊宝：长夜漫漫无心睡眠，我以为只有我睡不着，原来晶晶姑娘你也睡不着 ！
+ * describe:修改密码
+ */
 public class ChangePasswordActivity extends BaseActivity {
 
     @BindView(R.id.btn_back)

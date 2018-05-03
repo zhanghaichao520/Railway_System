@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:paddingBottom="10.0dip"
+            android:orientation="horizontal"
             android:paddingTop="10.0dip">
 
             <TextView
@@ -47,7 +48,20 @@
                 android:textAlignment="center"
                 style="simple_spinner_dropdown_item"
                 />
-
+            <TextView
+                android:id="@+id/txt_JCLX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/gray"
+                android:textSize="20.0sp"
+                android:textStyle="bold"
+                android:text="巡检"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <View
@@ -72,11 +86,13 @@
 
             <TextView
                 android:id="@+id/setSBBH"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
                 android:text="11DDDDDDDD1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18.0sp"
@@ -93,7 +109,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:paddingBottom="10.0dip"
-            android:paddingTop="10.0dip">
+            android:paddingTop="10.0dip"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,6 +132,20 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 />
+            <TextView
+                android:id="@+id/txt_GZLX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/gray"
+                android:textSize="20.0sp"
+                android:textStyle="bold"
+                android:text="未知"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <View
@@ -126,7 +157,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:paddingBottom="10.0dip"
-            android:paddingTop="10.0dip">
+            android:paddingTop="10.0dip"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -148,6 +180,20 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 />
+            <TextView
+                android:id="@+id/txt_GZDJ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/gray"
+                android:textSize="20.0sp"
+                android:textStyle="bold"
+                android:text="A级"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <View
@@ -273,6 +319,21 @@
                 android:paddingRight="15dip"
                 android:paddingTop="2dip"
                 android:text="保存上传"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/btn_sync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="22dp"
+                android:background="@drawable/txt_black_bg"
+                android:paddingBottom="2dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:paddingTop="2dip"
+                android:text="同步上传"
+                android:visibility="gone"
                 android:textColor="@color/black"
                 android:textSize="25sp"/>
         </LinearLayout>

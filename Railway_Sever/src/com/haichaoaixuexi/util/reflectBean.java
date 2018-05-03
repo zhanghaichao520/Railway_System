@@ -28,7 +28,7 @@ public class reflectBean {
     //mysql jdbc的java包驱动字符串  
     private String driverClassName = "com.mysql.jdbc.Driver";  
     //数据库中的表名  
-    String table = "eq_check";  
+    String table = "electronic_document";  
     //数据库的列名称  
     private String[] colnames; // 列名数组  
     //列名类型数组    

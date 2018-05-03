@@ -1,21 +1,25 @@
 package com.haichaoaixuexi.railway_system_android.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.haichaoaixuexi.railway_system_android.R;
 import com.haichaoaixuexi.railway_system_android.app.ChangePasswordActivity;
 import com.haichaoaixuexi.railway_system_android.app.DataSyncActivity;
+import com.haichaoaixuexi.railway_system_android.app.EqCheckHistoryActivity;
 import com.haichaoaixuexi.railway_system_android.app.EqCheckListActivity;
+import com.haichaoaixuexi.railway_system_android.app.EqRepairListActivity;
 import com.haichaoaixuexi.railway_system_android.app.EquimentInfoActivity;
 import com.haichaoaixuexi.railway_system_android.app.FeedBackActivity;
 import com.haichaoaixuexi.railway_system_android.app.LoginActivity;
@@ -56,7 +60,7 @@ public class MainFragment extends Fragment {
     CircleMenuLayout idMenulayout;
     Unbinder unbinder;
     private CircleMenuLayout mCircleMenuLayout;
-    private String[] mItemTexts = new String[]{"设备巡检 ", "设备点检", "故障维修",
+    private String[] mItemTexts = new String[]{"设备巡检 ", "设备点检", "检修验收",
             "问题反馈", "数据同步", "修改密码"};
     private int[] mItemImgs = new int[]{R.drawable.btn_xunjian,
             R.drawable.btn_dianjian, R.drawable.btn_guzhang,
@@ -93,6 +97,9 @@ public class MainFragment extends Fragment {
                         case 1:
                             startActivity(new Intent(getActivity(), EqCheckListActivity.class));
                             break;
+                        case 2:
+                            startActivity(new Intent(getActivity(), EqRepairListActivity.class));
+                            break;
                         case 3:
                             startActivity(new Intent(getActivity(), FeedBackActivity.class));
                             break;
@@ -115,8 +122,30 @@ public class MainFragment extends Fragment {
             }
             @Override
             public void itemCenterClick(View view) {
-                Toast.makeText(getActivity(), "logo",
-                        Toast.LENGTH_SHORT).show();
+                if (Const.currentuser == null) {
+                    DialogUIUtils.showToastCenter("请先登陆");
+                    return;
+                }else if (Const.currentuser.getROLE_ID()>2) {
+                    DialogUIUtils.showToastCenter("权限不足");
+                    return;
+                }
+                final EditText inputServer = new EditText(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("设备检修历史").setIcon(android.R.drawable.ic_dialog_info).setView(inputServer).setNegativeButton("取消",
+                        null);
+                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String SBBH = inputServer.getText().toString().trim();
+                        if (SBBH.length()==9) {
+                            Intent intent = new Intent(getActivity(), EqCheckHistoryActivity.class);
+                            intent.putExtra("SBBH", SBBH);
+                            startActivity(intent);
+                        } else {
+                            GeneralUtil.toast(getContext(), "请输入合法的设备号");
+                        }
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -154,6 +183,7 @@ public class MainFragment extends Fragment {
                     //界面跳转
                     Intent intent = new Intent(getActivity(),EquimentInfoActivity.class);
                     intent.putExtra("SBBH",content);
+                    intent.putExtra("type", "check");
                     startActivity(intent);
                 }else {
                     DialogUIUtils.showToast("二维码类别不正确");

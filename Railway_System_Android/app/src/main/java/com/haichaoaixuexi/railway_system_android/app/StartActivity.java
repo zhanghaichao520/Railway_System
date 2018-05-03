@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.haichaoaixuexi.railway_system_android.R;
+import com.haichaoaixuexi.railway_system_android.view.EDocumentFragment;
 import com.haichaoaixuexi.railway_system_android.view.MainFragment;
 import com.haichaoaixuexi.railway_system_android.view.PersonalFragment;
 import com.haichaoaixuexi.railway_system_android.view.TextFragment;
@@ -20,12 +21,14 @@ import java.util.List;
 
 /**
  * Created by haichaoaixuexi on 2018/2/12.
+ * describe:app主界面
  */
 
 public class StartActivity extends BaseActivity {
     MainAdapter adapter;
     MainFragment mainFragment = new MainFragment();
     PersonalFragment personalFragment = new PersonalFragment();
+    EDocumentFragment eDocumentFragment = new EDocumentFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +62,7 @@ public class StartActivity extends BaseActivity {
             super(fm);
 
             fragments.add(mainFragment);
-            fragments.add(TextFragment.newInstance(titles[1]));
+            fragments.add(eDocumentFragment);
             fragments.add(TextFragment.newInstance(titles[2]));
             fragments.add(personalFragment);
 
