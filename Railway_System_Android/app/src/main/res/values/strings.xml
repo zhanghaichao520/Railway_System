@@ -12,6 +12,7 @@
     <string name="aboutSoft">关于软件</string>
     <string name="flag">></string>
     <string name="udpateCheck">升级检查</string>
+    <string name="analysis">统计分析</string>
     <string name="Hint">提示</string>
     <string name="exitHint">退出</string>
     <string name="versionUpdate">版本升级</string>

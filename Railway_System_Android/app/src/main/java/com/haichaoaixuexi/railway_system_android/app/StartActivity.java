@@ -9,9 +9,9 @@ import android.view.View;
 
 import com.haichaoaixuexi.railway_system_android.R;
 import com.haichaoaixuexi.railway_system_android.view.EDocumentFragment;
+import com.haichaoaixuexi.railway_system_android.view.LogFragment;
 import com.haichaoaixuexi.railway_system_android.view.MainFragment;
 import com.haichaoaixuexi.railway_system_android.view.PersonalFragment;
-import com.haichaoaixuexi.railway_system_android.view.TextFragment;
 import com.lzy.widget.AlphaIndicator;
 import com.zwy.kutils.utils.AppManager;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
@@ -29,6 +29,7 @@ public class StartActivity extends BaseActivity {
     MainFragment mainFragment = new MainFragment();
     PersonalFragment personalFragment = new PersonalFragment();
     EDocumentFragment eDocumentFragment = new EDocumentFragment();
+    LogFragment logFragment = new LogFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,7 @@ public class StartActivity extends BaseActivity {
 
             fragments.add(mainFragment);
             fragments.add(eDocumentFragment);
-            fragments.add(TextFragment.newInstance(titles[2]));
+            fragments.add(logFragment);
             fragments.add(personalFragment);
 
         }

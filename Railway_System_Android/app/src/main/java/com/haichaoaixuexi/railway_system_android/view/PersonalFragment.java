@@ -1,6 +1,7 @@
 package com.haichaoaixuexi.railway_system_android.view;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,22 +13,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.haichaoaixuexi.railway_system_android.R;
+import com.haichaoaixuexi.railway_system_android.app.AnalysisActivity;
+import com.haichaoaixuexi.railway_system_android.app.LogActivity;
 import com.haichaoaixuexi.railway_system_android.app.LoginActivity;
 import com.haichaoaixuexi.railway_system_android.data.Const;
 import com.haichaoaixuexi.railway_system_android.entity.Users;
 import com.haichaoaixuexi.railway_system_android.utils.GeneralUtil;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 import com.zwy.kutils.utils.Log;
 import com.zwy.kutils.widget.loadingdialog.DialogUIUtils;
+import com.zwy.kutils.widget.loadingdialog.bean.TieBean;
+import com.zwy.kutils.widget.loadingdialog.listener.DialogUIItemListener;
+
+import org.feezu.liuli.timeselector.TimeSelector;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +80,11 @@ public class PersonalFragment extends Fragment {
     @BindView(R.id.btn_logout)
     Button btnLogout;
     Unbinder unbinder;
+    @BindView(R.id.ll_group)
+    RelativeLayout llGroup;
+    @BindView(R.id.ll_analysis)
+    RelativeLayout llAnalysis;
+    private List<TieBean> userList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,12 +112,64 @@ public class PersonalFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (Const.currentuser != null && Const.currentuser.getROLE_ID() == 2)
+            getUserInMyGroup();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+    @OnClick(R.id.ll_analysis)
+    public void analysis(){
+        if (Const.currentuser != null && Const.currentuser.getROLE_ID() == 2) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            Date curDate = new Date(System.currentTimeMillis());
+            String date = formatter.format(curDate);
+            TimeSelector timeSelector = new TimeSelector(getActivity(), new TimeSelector.ResultHandler() {
+                @Override
+                public void handle(String time) {
+
+                    Intent intent = new Intent(getActivity(), AnalysisActivity.class);
+                    intent.putExtra("time", time.substring(0, 10));
+                    startActivity(intent);
+                }
+            }, "2000-01-01 00:00", date);
+            timeSelector.setIsLoop(false);
+            timeSelector.setMode(TimeSelector.MODE.YMD);//只显示 年月日
+            timeSelector.show();
+        } else {
+            showToast("权限不足");
+        }
+    }
+
+    @OnClick(R.id.ll_group)
+    public void showUser() {
+        if (Const.currentuser != null && Const.currentuser.getROLE_ID() == 2) {
+            DialogUIUtils.showCenterSheet(getContext(), userList, true, false, new DialogUIItemListener() {
+                @Override
+                public void onItemClick(CharSequence text, int position) {
+                    final int user_id = userList.get(position).getId();
+                    DialogUIUtils.showTwoButtonAlertDialog(getActivity(), "提示", "确定查看" + userList.get(position).getTitle() + "的工作日志吗", "取消", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    }, "查看", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Const.user_id_log = user_id;
+                            Intent intent = new Intent(getActivity(), LogActivity.class);
+                            startActivity(intent);
+                        }
+                    }, false);
+                }
+            }).show();
+        } else {
+            showToast("权限不足");
+        }
+
     }
 
     @OnClick(R.id.btn_setPhone)
@@ -233,4 +305,30 @@ public class PersonalFragment extends Fragment {
             }
         }
     };
+
+    /**
+     * 得到本组员工信息，用于分配任务
+     */
+    private void getUserInMyGroup() {
+        OkGo.<String>post(Const.URL_GET_USER_BY_GROUP)
+                .tag(this)
+                .params("gid", Const.currentuser.getGROUP_ID())
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+                        userList.clear();
+                        Gson gson = new Gson();
+                        List<Users> users = gson.fromJson(response.body(), new TypeToken<List<Users>>() {
+                        }.getType());
+                        for (int i = 0; i < users.size(); i++) {
+                            Users u = users.get(i);
+                            //除去自己
+                            if (u.getUSER_ID() != Const.currentuser.getUSER_ID()) {
+                                TieBean user = new TieBean(u.getUSER_NAME(), u.getUSER_ID());
+                                userList.add(user);
+                            }
+                        }
+                    }
+                });
+    }
 }

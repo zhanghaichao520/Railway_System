@@ -98,6 +98,37 @@ public class GetEq_checkForAndroid extends HttpServlet {
 			}else {
 				out.println("sever failed");
 			}
+		}else if (action != null && action.equals("getAllByUSER")) {
+			int USER_ID = Integer.parseInt(request.getParameter("USER_ID"));
+			List<Eq_check> ecs = new ArrayList<>();
+			ecs = ecd.getAllEcByUSER(USER_ID);
+			if (ecs!=null&&ecs.size()!=0) {
+				for (Eq_check eq_check : ecs) {
+					if (eq_check.getYSR()==0) {
+						ecs.remove(eq_check);
+					}
+					eq_check.setImgString(Util.getImageStr("D:\\工作区\\服务器\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Railway_Sever\\upload\\"+eq_check.getGZTP()));
+				}
+				out.println(gson.toJson(ecs));
+			}else {
+				out.println("sever failed");
+			}
+		}else if (action != null && action.equals("getAllByYSSJ")) {
+			String YSSJ = request.getParameter("YSSJ");
+			int gid = Integer.parseInt(request.getParameter("gid"));
+			List<Eq_check> ecs = new ArrayList<>();
+			ecs = ecd.getAllEcByYSSJ(YSSJ,gid);
+			if (ecs!=null&&ecs.size()!=0) {
+				for (Eq_check eq_check : ecs) {
+					if (eq_check.getYSR()==0) {
+						ecs.remove(eq_check);
+					}
+					eq_check.setImgString(Util.getImageStr("D:\\工作区\\服务器\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Railway_Sever\\upload\\"+eq_check.getGZTP()));
+				}
+				out.println(gson.toJson(ecs));
+			}else {
+				out.println("sever failed");
+			}
 		}
 
 	}

@@ -9,7 +9,7 @@ import com.haichaoaixuexi.railway_system_android.entity.Users;
 
 public class Const {
     final static public String DBNAME = "railway.db";
-    final static public String URL = "http://192.168.1.120:8080/Railway_Sever";
+    final static public String URL = "http://192.168.1.110:8080/Railway_Sever";
 
     final static public String URL_LOGIN = URL+"/Login.do";
     final static public String URL_GET_USER_BY_PHONE = URL+"/GetUserByPhone.do";
@@ -26,6 +26,7 @@ public class Const {
     final static public long TIMEOUT = 5000;
 
     static public String imgString = "";
+    static public int user_id_log=0;
     static public Users currentuser = null;
     final static public String MESSAGE_LOGHIN_ERROR = "登陆出错";
     final static public String MESSAGE_LOGHIN_FAILED = "用户名|密码错误";

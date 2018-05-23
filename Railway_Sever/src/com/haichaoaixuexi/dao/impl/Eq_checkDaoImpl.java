@@ -13,6 +13,7 @@ import org.eclipse.jdt.internal.compiler.batch.Main;
 
 import com.google.gson.Gson;
 import com.haichaoaixuexi.dao.Eq_checkDao;
+import com.haichaoaixuexi.dao.EquipmentDao;
 import com.haichaoaixuexi.dao.UserDao;
 import com.haichaoaixuexi.entity.EDocument;
 import com.haichaoaixuexi.entity.Eq_check;
@@ -20,6 +21,8 @@ import com.haichaoaixuexi.entity.Users;
 import com.haichaoaixuexi.util.BeanUtil;
 import com.haichaoaixuexi.util.DBUtil;
 import com.haichaoaixuexi.util.Util;
+
+import sun.net.www.content.image.gif;
 
 public class Eq_checkDaoImpl extends DBUtil implements Eq_checkDao {
 	/**
@@ -208,9 +211,70 @@ public class Eq_checkDaoImpl extends DBUtil implements Eq_checkDao {
 		}
 		return ecs;
 	}
-/*	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Eq_checkDao ecd = new Eq_checkDaoImpl();
 		
-		System.out.println(ecd.getAllEcBySBBH(180307001).size());
+		System.out.println(ecd.getAllEcByYSSJ("2017-04-22 17:34").size());
 	}*/
+
+	@Override
+	public List<Eq_check> getAllEcByUSER(int USER_ID) {
+		// TODO Auto-generated method stub
+		List<Eq_check> ecs = new ArrayList<>();
+		Eq_check ec= null;
+		String sql ="SELECT * FROM eq_check WHERE BXR = ? OR YSR = ?";
+		ResultSet resultSet = super.executeQuery(sql,USER_ID,USER_ID);
+		UserDao udi = new UserDaoImpl();
+		try {
+			while (resultSet.next()) {
+				try {
+					ec = (Eq_check) BeanUtil.autoBean(Eq_check.class, resultSet);
+					ec.setBXR_NAME(udi.getUserById(ec.getBXR()).getUSER_NAME());
+					ecs.add(ec);
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+						| InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println(e.getMessage().toString());
+				}
+			}
+			return ecs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ecs;
+	}
+
+	@Override
+	public List<Eq_check> getAllEcByYSSJ(String YSSJ,int gid) {
+		// TODO Auto-generated method stub
+		List<Eq_check> ecs = new ArrayList<>();
+		Eq_check ec= null;
+		String sql ="SELECT * FROM eq_check WHERE YSSJ>?";
+		ResultSet resultSet = super.executeQuery(sql,YSSJ);
+		UserDao udi = new UserDaoImpl();
+		EquipmentDao edi = new EquipmentDaoImpl();
+		try {
+			while (resultSet.next()) {
+				try {
+					ec = (Eq_check) BeanUtil.autoBean(Eq_check.class, resultSet);
+					ec.setBXR_NAME(udi.getUserById(ec.getBXR()).getUSER_NAME());
+					if (edi.getEquimentById(ec.getSBBH()).getGROUP_ID()==gid) {
+						ecs.add(ec);
+					}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+						| InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println(e.getMessage().toString());
+				}
+			}
+			return ecs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ecs;
+	}
 }

@@ -87,7 +87,6 @@ public class EqIssuesActivity extends BaseActivity {
         });
         table.setZoom(true);
         table.getConfig().setShowXSequence(false).setShowYSequence(false).setMinTableWidth(100);
-
     }
 
     @OnClick(R.id.btn_back)

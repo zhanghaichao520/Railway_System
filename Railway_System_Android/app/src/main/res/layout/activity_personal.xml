@@ -48,13 +48,13 @@
         android:layout_below="@+id/top"
         android:orientation="vertical"
         android:padding="10.0dip"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1.0"
             android:paddingBottom="10.0dip"
             android:paddingTop="10.0dip">
@@ -261,10 +261,12 @@
 
 
         <RelativeLayout
+            android:id="@+id/ll_group"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:paddingBottom="10.0dip"
+            android:background="@drawable/update_selector"
             android:paddingTop="10.0dip">
 
             <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -304,6 +306,39 @@
             android:layout_height="1.0dip"
             android:background="@drawable/line"/>
 
+        <RelativeLayout
+            android:id="@+id/ll_analysis"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/update_selector"
+            android:clickable="true"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip">
+
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                             android:id="@+id/img_analysis"
+                                                             android:layout_width="35dp"
+                                                             android:layout_height="35dp"
+                                                             android:scaleType="centerCrop"
+                                                             android:src="@mipmap/analysis"
+                                                             app:riv_corner_radius="2dip"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_analysis"
+                android:text="@string/analysis"
+                android:textColor="@color/hintColor"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@drawable/line"/>
         <RelativeLayout
             android:id="@+id/updateRelative"
             android:layout_width="fill_parent"
@@ -348,7 +383,6 @@
             android:layout_width="fill_parent"
             android:layout_height="1.0dip"
             android:background="@drawable/line"/>
-
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="fill_parent"

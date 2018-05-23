@@ -9,4 +9,6 @@ public interface Eq_checkDao {
 	public boolean updateEc(Eq_check ec);
 	public Eq_check getOneEcBySBBH(int SBBH);
 	public List<Eq_check> getAllEcBySBBH(int SBBH);
+	public List<Eq_check> getAllEcByUSER(int USER_ID);
+	public List<Eq_check> getAllEcByYSSJ(String YSSJ,int gid);
 }
